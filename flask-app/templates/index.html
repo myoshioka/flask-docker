@@ -1,0 +1,21 @@
+<!doctype html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>App-Test</title>
+</head>
+<body>
+  <h2>ユーザリスト</h2>
+  <ul>
+    {% for user in user_data %}
+    <li class='entry'>{{ user['name'] }}さん
+      <ul>
+        <li class='entry'>{{ user['address'] }}</li>
+        <li class='entry'>{{ user['email'] }}</li>
+      </ul>
+    </li>
+    {% endfor %}
+
+  </ul>
+  <a href="/logout">logout</a>
+</body>
+</html>

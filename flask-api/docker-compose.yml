@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    command: bash -c "./script/wait-for-postgres.sh api-db ./script/db_migration.sh && python main.py"
+    ports:
+      - "5000:5000"
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
+      - .:/code
+    tty: true
+    depends_on:
+      - api-db
+  api-db:
+    image: postgres:10
+    ports:
+      - "54329:5432"
+    environment:
+      POSTGRES_DB: "database"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+volumes:
+  dbdata:
