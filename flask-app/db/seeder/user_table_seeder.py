@@ -7,9 +7,12 @@ class UserTableSeeder(Seeder):
         """
         Run the database seeds.
         """
-        self.db.table('user').insert([
-            {
-                'name': 'admin',
-                'password': 'admin'
-            }
-        ])
+        try:
+            self.db.table('user').insert([
+                {
+                    'name': 'admin',
+                    'password': 'admin'
+                }
+            ])
+        except Exception as e:
+            print(e.args)

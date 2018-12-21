@@ -9,7 +9,7 @@ class CreateUsersTable(Migration):
         """
         with self.schema.create('user') as table:
             table.increments('id')
-            table.string('name', 60)
+            table.string('name', 60).unique()
             table.string('password', 200)
             table.timestamps()
 
@@ -17,4 +17,4 @@ class CreateUsersTable(Migration):
         """
         Revert the migrations.
         """
-        self.schema.drop('batch_history')
+        self.schema.drop('user')

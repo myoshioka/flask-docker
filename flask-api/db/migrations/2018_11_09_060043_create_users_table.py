@@ -11,11 +11,11 @@ class CreateUsersTable(Migration):
             table.increments('id')
             table.string('name', 60)
             table.string('address', 200)
-            table.string('email')
+            table.string('email').unique()
             table.timestamps()
 
     def down(self):
         """
         Revert the migrations.
         """
-        self.schema.drop('batch_history')
+        self.schema.drop('user')

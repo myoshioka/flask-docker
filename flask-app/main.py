@@ -18,8 +18,9 @@ bootstrap = Bootstrap(app)
 @app.route('/')
 @login_required
 def index():
-    places_url = 'http://host.docker.internal:5000'
-    response = requests.get(places_url)
+    #api_url = 'http://host.docker.internal:5000'
+    api_url = 'http://api:5000'
+    response = requests.get(api_url)
     user_data = json.loads(response.text)
     return render_template('index.html', user_data=user_data)
 
