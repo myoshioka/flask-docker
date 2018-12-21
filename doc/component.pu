@@ -1,0 +1,31 @@
+@startuml
+
+package "App Container" {
+    node "Python(app)" {
+        [Flask(App)]
+    }
+}
+
+package "App DB Container" {
+  database "App Database" {
+      [account]
+  }
+}
+
+package "APi Container" {
+    node "Python(api)" {  
+        [Flask(Api)]
+    }
+}
+
+package "Api DB Container" {
+  database "Api Database" {
+      [user data]
+  }
+}
+
+[Flask(App)] .. [account] : sql
+[Flask(App)] .. [Flask(Api)] : http
+[Flask(Api)] .. [user data] : sql
+
+@enduml

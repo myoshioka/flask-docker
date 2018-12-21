@@ -1,0 +1,29 @@
+@startuml
+
+title Flask app
+
+participant "App" as app
+participant "App DB" as appdb
+participant "Api" as api
+participant "Api DB" as apidb
+
+activate app
+app -> appdb : login
+
+activate appdb
+appdb -> app
+deactivate appdb
+
+app -> api: request user data
+
+activate api
+api -> apidb: get user data
+activate apidb
+apidb -> api
+deactivate apidb
+
+api -> app
+deactivate api
+deactivate app
+
+@enduml
