@@ -1,21 +1,29 @@
-<!doctype html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>App-Test</title>
-</head>
-<body>
-  <h2>ユーザリスト</h2>
-  <ul>
-    {% for user in user_data %}
-    <li class='entry'>{{ user['name'] }}さん
-      <ul>
-        <li class='entry'>{{ user['address'] }}</li>
-        <li class='entry'>{{ user['email'] }}</li>
-      </ul>
-    </li>
-    {% endfor %}
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
 
-  </ul>
-  <a href="/logout">logout</a>
-</body>
-</html>
+{% block content %}
+<div class="container">
+  <h2>ユーザリスト</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>    
+      {% for user in user_data %}
+      <tr>
+        <td>{{ user['name'] }}さん</td>
+        <td>{{ user['address'] }}</td>
+        <td>{{ user['email'] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p><a href="/logout">logout</a></p>
+  </div>
+{% endblock %}
