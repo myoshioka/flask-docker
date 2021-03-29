@@ -21,7 +21,7 @@ pastel==0.1.0
 pendulum==1.5.1
 psycopg2==2.7.5
 pyaml==16.12.2
-Pygments==2.2.0
+Pygments==2.7.4
 pylev==1.3.0
 python-dateutil==2.7.5
 python-dotenv==0.9.1
